@@ -1,0 +1,50 @@
+<div style="padding: 15px;">
+     <div class="row justify-content-center" style="margin-bottom:10px; text-align:center;">
+        <div class="col-4 justify-content-center">
+            <h5>Hola {{user}} !</h5>
+        </div> 
+        <div class="col-4">  
+            <a class="btn btn-danger" href="/admin/login/logout"> Cerrar sesion </a>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <h3>Listado de productos</h3>
+        </div>
+        <div class="col-5 text-end">
+            <a href="/admin/productos/agregar" title="Agregar" class="btn btn-success">
+                <i class="fa fa-plus"> Agregar Nuevo </i></a>
+        </div> 
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Tipo objeto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+             {{#each productos}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{titulo}}</td>
+                <td>{{descripcion}}</td>
+                <td>{{tipo_objeto}}</td>
+                <td>{{precio}}</td>
+                <td>
+                    <a href="/admin/productos/editar/{{id}}" title="Editar" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a href="/admin/productos/eliminar/{{id}}" title="Eliminar" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+             {{/each}}
+        </tbody>
+    </table>
+</div>

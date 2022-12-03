@@ -1,0 +1,33 @@
+<div class="container">
+    <div style="text-align:center; padding:10px;">
+        <h3>Agregar nuevo producto</h3>
+    </div>
+    <form class="row g-3" action="/admin/productos/agregar" method="post">
+    <div class="col-12">
+        <label for="inputTitulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="inputTitulo" name="titulo" required>
+    </div>
+    <div class="col-12">
+        <label for="inputDescripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" id="inputDescripcion" rows="3" name="descripcion"></textarea>
+    </div>
+    <div class="col-12">
+        <label for="inputTipo" class="form-label">Tipo Objeto</label>
+        <input type="text" class="form-control" id="inputTipo" name="tipo_objeto">
+    </div>
+    <div class="col-12">
+        <label for="inputPrecio" class="form-label">Precio</label>
+        <input type="nomber" class="form-control" id="inputPrecio" name="precio">
+    </div>
+    <div class="col-12">
+        <label for="formFile" class="form-label">Seleccionar imagen</label>
+        <input class="form-control" type="file" id="formFile" name="link_imagen">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-secondary">Guardar</button>
+    </div>
+    </form>
+    {{#if error}}
+    <h5 style="color:red;">{{message}}</h5>
+    {{/if}}
+</div>
