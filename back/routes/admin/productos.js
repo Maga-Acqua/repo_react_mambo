@@ -11,7 +11,11 @@ router.get('/', async function(req, res, next) {
     var productos = await productosModel.getProductos();
     productos = productos.map(producto => {
       if(producto.img_id){
-        var imagen = cloudinary.image(producto.img_id, { width:100, height:100, crop:'fill' });
+        const imagen = cloudinary.image(producto.img_id, { 
+          width:100, 
+          height:100, 
+          crop:'fill' 
+        });
         return {
           ...producto,
           imagen
@@ -27,28 +31,27 @@ router.get('/', async function(req, res, next) {
     res.render('admin/productos', { 
       layout: 'admin/layout',
       user: req.session.user,
-      productos });
+      productos 
+    });
   });
 
-  router.get('/agregar', async function(req, res, next) {
+  router.get('/agregar', async (req, res, next) => {
     res.render('admin/agregar', {
       layout: 'admin/layout'
-    })
+    });
   });
 
-  router.post('/agregar', async function(req, res, next){
+  router.post('/agregar', async (req, res, next) => {
     try{
-      // Upload imagen
       var img_id = '';
       if(req.files && Object.keys(req.files).length > 0){
         imagen = req.files.imagen;
         img_id = (await uploader(imagen.tempFilePath)).public_id;
       }
-      console.log(img_id);
       if(req.body.titulo != ""){
         await productosModel.insertProduct({
           ...req.body,
-          img_id
+          img_id 
         });
         res.redirect('/admin/productos');
       } else {
@@ -71,7 +74,7 @@ router.get('/', async function(req, res, next) {
 
     let producto = await productosModel.getProducById(id);
     if(producto.img_id){
-      await destroy(producto.img_id);
+      await (destroy(producto.img_id));
     }
 
     await productosModel.deleteProductById(id);
@@ -87,11 +90,11 @@ router.get('/', async function(req, res, next) {
     })
   });
 
-  router.post('/editar', async function(req,res,next){
+  router.post('/editar', async function(req, res, next){
     try{
       let img_id = req.body.img_original;
       let borrar_img_anterior = false;
-      if(req.body.img_delete ==="1"){
+      if(req.body.img_delete === "1"){
         img_id = null;
         borrar_img_anterior = true;
       } else {

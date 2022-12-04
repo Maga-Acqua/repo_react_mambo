@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var fileUpload = require('express-fileupload');
+var cors = require('cors');
 
 require('dotenv').config();
 
@@ -12,6 +13,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
 var adminProductosRouter = require('./routes/admin/productos');
+var apiRouter = require('./routes/api');
 
 var pool = require('./models/db');
 
@@ -45,6 +47,7 @@ secured = async(req, res, next) => {
   }
 }
 app.use('/admin/productos', adminProductosRouter);
+app.use('/api', cors(), apiRouter);
 
 app.use(fileUpload({
   useTempFiles: true,
