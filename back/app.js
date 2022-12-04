@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var fileUpload = require('express-fileupload');
 
 require('dotenv').config();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: '123456', resave: true, saveUninitialized: true }));
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin/login', loginRouter);
@@ -43,6 +45,11 @@ secured = async(req, res, next) => {
   }
 }
 app.use('/admin/productos', adminProductosRouter);
+
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

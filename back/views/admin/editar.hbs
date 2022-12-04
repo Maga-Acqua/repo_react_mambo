@@ -2,7 +2,8 @@
     <div style="text-align:center; padding:10px;">
         <h3>Editar producto</h3>
     </div>
-    <form class="row g-3" action="/admin/productos/editar" method="post">
+    <form class="row g-3" action="/admin/productos/editar" 
+        method="post" enctype="multipart/form-data">
     <input type="hidden" value="{{producto.id}}" name="id">
     <div class="col-12">
         <label for="inputTitulo" class="form-label">Título</label>
@@ -22,9 +23,14 @@
         <label for="inputPrecio" class="form-label">Precio</label>
         <input type="nomber" class="form-control" id="inputPrecio" name="precio" value="{{producto.precio}}">
     </div>
-    <div class="col-12">
-        <label for="formFile" class="form-label">Seleccionar imagen</label>
-        <input class="form-control" type="file" id="formFile" name="link_imagen" value="{{producto.link_imagen}}">
+    <div class="form-group">
+        <label for="formFile" class="form-label">Imagen</label>
+        <input class="form-control" type="file" id="formFile" name="imagen">
+        <label>
+            <input type="checkbox" name="img_delete" id="img_delete" value="1"> 
+            Eliminar imagen actual?
+        </label>
+        <input type="hidden" name="img_original" value="{{producto.img_id}}">
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-secondary">Modificar</button>

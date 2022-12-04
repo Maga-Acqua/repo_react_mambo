@@ -2,7 +2,8 @@
     <div style="text-align:center; padding:10px;">
         <h3>Agregar nuevo producto</h3>
     </div>
-    <form class="row g-3" action="/admin/productos/agregar" method="post">
+    <form class="row g-3" action="/admin/productos/agregar" 
+        method="post" enctype="multipart/form-data">
     <div class="col-12">
         <label for="inputTitulo" class="form-label">Título</label>
         <input type="text" class="form-control" id="inputTitulo" name="titulo" required>
@@ -19,9 +20,9 @@
         <label for="inputPrecio" class="form-label">Precio</label>
         <input type="nomber" class="form-control" id="inputPrecio" name="precio">
     </div>
-    <div class="col-12">
-        <label for="formFile" class="form-label">Seleccionar imagen</label>
-        <input class="form-control" type="file" id="formFile" name="link_imagen">
+    <div class="form-group">
+        <label for="formFile" class="form-label">Imagen</label>
+        <input class="form-control" type="file" id="formFile" name="imagen">
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-secondary">Guardar</button>
