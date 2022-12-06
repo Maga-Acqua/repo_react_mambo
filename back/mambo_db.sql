@@ -46,5 +46,6 @@ CREATE TABLE `mambo_db`.`productos` (
 --
 
 LOCK TABLES `mambo_db`.`productos` WRITE;
-INSERT INTO `productos` VALUES (1,'Floral 1','            Diseño floral con colores vivos. Colores a eleccion.\r\n        \r\n        ','Maceta',1150,''),(3,'Gatos 1','            Diseño de gato. Tamaños pequeños.\r\n        \r\n        \r\n        \r\n        \r\n        ','Maceta',850,NULL);
+INSERT INTO `productos` VALUES (3,'Gatos Nuevos','Diseño de gato. Tamaños pequeños.\r\n        \r\n        \r\n        \r\n        \r\n        \r\n        \r\n        \r\n        ','Maceta',950,'pds48jdwwa92jyzjcqwi'),(6,'Florales 2','            Descripcion en proceso.\r\n        \r\n        ','Maceta',1250,'qfjmaulpsygdbqggzmb3'),(7,'Florales 3','Descripcion en proceso','Maceta',950,'nx9ey8ge2uwik47kjq9d'),(8,'Frida',' Descripcion en proceso\r\n        \r\n        \r\n        ','Maceta',2500,'kcdkgsk8cd8y8ny49wss'),(9,'Test','test','Maceta',1500,'cqdjqjaktiyvrpanmbi2');
+/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;

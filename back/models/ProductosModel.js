@@ -12,7 +12,6 @@ async function getProductos(){
 
 async function insertProduct(obj){
     try{
-        console.log(obj);
         var query = "insert into productos set ? ";
         var rows = await pool.query(query, [obj]);
         return rows;

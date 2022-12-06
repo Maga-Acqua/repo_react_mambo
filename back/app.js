@@ -22,7 +22,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,10 +29,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: '123456', resave: true, saveUninitialized: true }));
 
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin/login', loginRouter);
+app.use('/api', cors(), apiRouter);
 secured = async(req, res, next) => {
   try{
     console.log(req.session.id);
@@ -46,13 +50,8 @@ secured = async(req, res, next) => {
     console.log(error);
   }
 }
-app.use('/admin/productos', adminProductosRouter);
-app.use('/api', cors(), apiRouter);
+app.use('/admin/productos', secured, adminProductosRouter);
 
-app.use(fileUpload({
-  useTempFiles: true,
-  tempFileDir: '/tmp/'
-}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
