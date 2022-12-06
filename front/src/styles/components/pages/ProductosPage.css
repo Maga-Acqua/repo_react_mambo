@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 10px;
+    line-height: 12px;
 }
 
 .producto {
@@ -22,9 +23,21 @@
     max-width: 100%;
 }
 
-.producto p,
 .producto h4 {
-    line-height: 12px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2em;
 }
 
+.tipoObjeto {
+    color: gray;
+    text-transform: uppercase;
+}
+
+.precio {
+    font-weight: bold;
+}
+
+.descripcion {
+    line-height: 18px;
+}
 /****FIN PRODUCTOS****/
